@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.slt.slt.mapper.BorrowMapper">
+
+    <!--归还书籍 动态设置-->
+    <update id="UpdateBorrow">
+        UPDATE borrow
+        <set>
+            <if test="status != null">
+                Status = #{status},
+            </if>
+            <if test="returnDate != null">
+                return_date = #{returnDate},
+            </if>
+            <if test="returnCounts != null">
+                return_counts = #{returnCounts},
+            </if>
+            <if test="dele!= null">
+                dele = #{dele},
+            </if>
+        </set>
+        WHERE borrow_id = #{borrowId}
+    </update>
+
+    <!--    借阅书籍-->
+    <select id="BorrowBook">
+        INSERT INTO borrow (borrow_isn,book_id, reader_id, borrow_date, return_date, due_date, status, days, counts,return_counts,dele)
+        VALUES (#{borrowIsn},#{bookId}, #{readerId}, #{borrowDate}, #{returnDate}, #{dueDate}, #{status}, #{days}, #{counts},#{returnCounts},#{dele})
+    </select>
+    <!--查询用户总书籍的借阅数量-->
+    <select id="GetBorrowCountByReaderId" resultType="java.lang.Integer">
+        SELECT COALESCE(SUM(counts), 0) FROM borrow WHERE reader_id = #{readerId} AND Status != 1
+    </select>
+    <!--查询用户指定书籍的借阅数量-->
+    <select id="GetBorrowCountByBookId" resultType="java.lang.Integer">
+        SELECT COALESCE(SUM(counts - return_counts), 0)
+        FROM borrow
+        WHERE book_id = #{bookId} AND reader_id = #{readerId} AND Status != 1
+    </select>
+    <!--获取用户借阅的书籍列表信息-->
+    <select id="GetBorrowList" resultType="com.slt.slt.domain.DTO.BorrowDTO">
+        SELECT
+            br.*,
+            b.title,
+            b.image_url
+        FROM
+            borrow br
+                JOIN
+            books b ON br.book_id = b.id
+        WHERE
+            br.reader_id = #{userId}
+        AND
+            br.dele = 0
+    </select>
+</mapper>

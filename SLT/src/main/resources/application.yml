@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/slt}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DATABASE:0}
+      password: ${REDIS_PASSWORD:}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+mybatis:
+  mapper-locations: classpath:com.slt.slt.mapper/*.xml
+  type-aliases-package: com.slt.slt.pojo
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰命名 和 下划线 自动转换
+
+
+logging:
+  level:
+    org.mybatis: DEBUG
+    com.slt.slt: DEBUG  # 也可以查看您自己项目的日志

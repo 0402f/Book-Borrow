@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.slt.slt.mapper.BookCategoryMapper">
+    <!--动态更新图书分类信息-->
+    <update id="updateBookCategoryById">
+        update book_category
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="des != null">
+                des = #{des},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <!--更据分类id查询该分类下的图书数量-->
+    <select id="getBookCategoryCountById" resultType="java.lang.Integer">
+        select count(*) from books where category_id=#{categoryId} and status = 1;
+    </select>
+    <!--根据分类名模糊查询分类-->
+    <select id="getBookCategoryByLikeName" resultType="com.slt.slt.domain.POJO.BookCategory">
+        select * from book_category where name like concat('%',#{name},'%')
+    </select>
+</mapper>

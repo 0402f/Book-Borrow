@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.slt.slt.mapper.BookMapper">
+
+    <!--查询所有图书的库存数量-->
+
+    <insert id="SaveBook">
+            INSERT INTO books (id, title, author, publisher, isbn, publish_date, category_id, stock, image_url, des, total, status)
+            VALUES ( #{id},#{title}, #{author},#{publisher}, #{isbn},#{publishDate},#{categoryId}, #{stock}, #{imageUrl},
+                       #{des},#{total}, #{status})
+    </insert>
+
+
+    <!--更据id更新书籍信息-->
+    <update id="UpdateBook">
+        update books
+        <set>
+            <if test="title!= null">
+                title = #{title},
+            </if>
+            <if test="author!= null">
+                author = #{author},
+            </if>
+            <if test="publisher!= null">
+                publisher = #{publisher},
+            </if>
+            <if test="isbn!= null">
+                isbn = #{isbn},
+            </if>
+            <if test="publishDate!= null">
+                publish_date = #{publishDate},
+            </if>
+            <if test="categoryId!= null">
+                category_id = #{categoryId},
+            </if>
+            <if test="stock!= null">
+                stock = #{stock},
+            </if>
+            <if test="imageUrl!= null">
+                image_url = #{imageUrl},
+            </if>
+            <if test="des!= null">
+                des = #{des},
+            </if>
+            <if test="total!= null">
+                total = #{total},
+            </if>
+            <if test="status!= null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <select id="GetBookListByCategoryId" resultType="com.slt.slt.domain.POJO.Book">
+        select * from books where category_id = #{categoryId} and status = #{status}
+    </select>
+</mapper>
