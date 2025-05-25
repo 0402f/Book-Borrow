@@ -3,6 +3,19 @@
 ## 项目概述
 本项目是一个基于Spring Boot + Vue.js的现代化图书借阅管理系统，采用前后端分离架构设计。系统主要用于管理图书借阅、用户管理等功能，为图书馆提供便捷的管理服务。(部分功能尚未完全实现)
 ## 项目效果
+管理员：
+![e44248120382e11cab7ef5535eb3cffb](https://github.com/user-attachments/assets/acad4d04-965b-417f-97a5-3e2bca45c7d0)
+![0ccae1157f809e1768d55ecce0b41d69](https://github.com/user-attachments/assets/f290562e-9a70-4f63-82ec-3f569a0b8029)
+![42bef815aefd7b6da49e721529197169](https://github.com/user-attachments/assets/8c2f606d-c476-4407-bf29-3241f768376e)
+![1983040ba5fcb33fc338dfd204df04be](https://github.com/user-attachments/assets/474605c3-4d0c-4fb1-8607-c8b2c15d513d)
+![5c709a078f67c9d0d14411f51f2f7fe1](https://github.com/user-attachments/assets/83e664f8-7126-4e1a-b9cc-724765e63025)
+用户端：
+![34abe10e5842b0ac35b718090c084e5a](https://github.com/user-attachments/assets/230751b6-997d-41aa-a2f9-b240ad6e87c5)
+![6da46ba2b45bf0ddf33c856fa00a9916](https://github.com/user-attachments/assets/aa8f0860-e4cd-4905-ad1d-3bca696d289c)
+![572b547a3ad86ad5991ced0ae97f2100](https://github.com/user-attachments/assets/dc5435d4-400c-4b07-ba56-5354abc2086f)
+![d2ab1eac74769160d31d8935dee16015](https://github.com/user-attachments/assets/6aaa4fad-d6ed-4207-8fa8-b84bbb0062e6)
+![3a4d0d382870705f0430dda1169a204e](https://github.com/user-attachments/assets/f9418e3c-5060-4223-835f-20488c243166)
+
 
 
 ## 技术栈
